@@ -1,5 +1,7 @@
 import {useState} from 'react';
 
+import {useFormikContext} from 'formik';
+
 import {images} from '../../assets/images';
 import {icons} from '../../assets/icons';
 import {BrandByCardNumber} from '../../models/BrandByCardNumber';
@@ -17,6 +19,11 @@ const AddCardAccordion: React.FC<IAddCardAccordion> = ({
   brands,
   setFieldValue,
 }) => {
+
+  //you can also do this, which means you do not need to pass a function prop
+  //because this is in the formik wrap in the parent
+  const {setFieldValue} = useFormikContext();
+
   const [cardPreview, setCardPreview] = useState(images.cardMorePrepaid);
   const [openAccordion, setOpenAccordion] = useState(false);
 
